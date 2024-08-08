@@ -9,16 +9,14 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { darkTheme, lightTheme } from "./themes/theme.ts";
+import { ThemeContextProvider } from "./context";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
+      <ThemeContextProvider>
         <App />
-      </ThemeProvider>
+      </ThemeContextProvider>
     </ApolloProvider>
   </React.StrictMode>
 );
