@@ -19,12 +19,16 @@ const Navbar = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent:'space-between',
-            width:'100%'
+            justifyContent: "space-between",
+            width: "100%",
           }}
         >
           <Box>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, pl: 1 }}
+            >
               KeanuImages
             </Typography>
             <Button color="inherit" component={Link} to="/">
