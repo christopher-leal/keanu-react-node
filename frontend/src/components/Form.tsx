@@ -46,12 +46,12 @@ export const Form = () => {
     setErrors(null);
     const queryParams = new URLSearchParams({
       width: width.toString(),
-      height: height?.toString() || '',
+      height: height?.toString() || "",
       greyscale: greyscale.toString(),
       young: young.toString(),
     }).toString();
     navigate(`/image?${queryParams}`);
-};
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -90,7 +90,6 @@ export const Form = () => {
             margin="normal"
             error={!!errors?.height}
             helperText={errors?.height?.join(", ")}
-
           />
           <FormControlLabel
             control={<Checkbox name="greyscale" />}
