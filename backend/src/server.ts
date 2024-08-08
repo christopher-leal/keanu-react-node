@@ -49,8 +49,6 @@ export class Server {
         context: async () => {
           const { cache } = server;
           return {
-            // We create new instances of our data sources with each request,
-            // passing in our server's cache.
             dataSources: {
               keanuAPI: new KeanuAPI({ cache }),
             },
