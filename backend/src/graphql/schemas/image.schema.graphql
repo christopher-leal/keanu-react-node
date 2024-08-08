@@ -1,0 +1,12 @@
+type Image {
+  url: String!
+}
+
+type Query {
+  keanuImage(
+    width: String!
+    height: String
+    greyScale: Boolean
+    young: Boolean
+  ): Image!
+}
