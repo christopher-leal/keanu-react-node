@@ -4,6 +4,6 @@ export interface HistoryType {
   height?: number;
   greyscale: boolean;
   young: boolean;
-  url: string
+  url: string;
+  date?: Date
 }
-

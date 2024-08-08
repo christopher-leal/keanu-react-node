@@ -26,6 +26,10 @@ const historySchema = new Schema<HistoryType>({
     type: String,
     required: [true, "Url is required"],
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const HistoryModel = mongoose.model("History", historySchema);

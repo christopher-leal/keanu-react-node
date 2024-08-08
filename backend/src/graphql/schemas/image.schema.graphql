@@ -19,5 +19,5 @@ type Query {
     young: Boolean
   ): Image!
 
-  getHistory: [History]
+  getHistory(limit: Int): [History]
 }
