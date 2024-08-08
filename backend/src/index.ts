@@ -1,5 +1,5 @@
 import { envs } from "./config";
-// import { MongoDatabase } from "./data/mongo";
+import { MongoDatabase } from "./mongo";
 import { AppRoutes } from "./routes";
 import { Server } from "./server";
 
@@ -8,13 +8,11 @@ import { Server } from "./server";
 })();
 
 async function main() {
-  // await MongoDatabase.connect({
-  //   dbName: envs.MONGO_DATABASE,
-  //   host:envs.MONGO_HOST,
-  //   port:envs.MONGO_PORT,
-  //   username:envs.MONGO_USERNAME,
-  //   password:envs.MONGO_PASSWORD
-  // });
+  await MongoDatabase.connect({
+    dbName: envs.MONGO_DATABASE,
+    host:envs.MONGO_HOST,
+    port:envs.MONGO_PORT,
+  });
 
   new Server({
     port: envs.PORT,
