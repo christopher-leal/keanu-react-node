@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
+import { logger } from "../config";
 
 interface Options {
-  username: string;
-  password: string;
   host: string;
   port: string;
   dbName: string;
@@ -10,17 +9,15 @@ interface Options {
 
 export class MongoDatabase {
   static async connect(options: Options) {
-    const { username, password, host, port, dbName } = options;
-    console.log(username, password, host, port, dbName)
+    const { host, port, dbName } = options;
     try {
       await mongoose.connect(
-        `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`
+        `mongodb://${host}:${port}/${dbName}`
       );
-
-      console.log("Mongo connected");
+      logger.info("Mongo connected");
       return true;
     } catch (error) {
-      console.log("Mongo connection error");
+      logger.error("Mongo connection error");
       throw error;
     }
   }

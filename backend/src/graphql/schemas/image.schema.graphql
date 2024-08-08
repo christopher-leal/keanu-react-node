@@ -2,11 +2,22 @@ type Image {
   url: String!
 }
 
+type History {
+  id: String!
+  width: Int!
+  height: Int
+  greyscale: Boolean
+  young: Boolean
+  url: String!
+}
+
 type Query {
   keanuImage(
-    width: String!
-    height: String
-    greyScale: Boolean
+    width: Int!
+    height: Int
+    greyscale: Boolean
     young: Boolean
   ): Image!
+
+  getHistory: [History]
 }
