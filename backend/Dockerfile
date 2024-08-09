@@ -15,7 +15,7 @@ FROM base as production
 
 COPY --from=build $DIR/node_modules $DIR/node_modules
 COPY --from=build $DIR/dist $DIR/dist
-COPY --from=build $DIR/.env $DIR/.env
+COPY --from=build $DIR/.env.example $DIR/.env
 
 ENV NODE_ENV=production
 
