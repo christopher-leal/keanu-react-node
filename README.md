@@ -25,7 +25,7 @@ The project is organized into the following directories:
 
 ### Prerequisites
 
-Ensure you have the following installed:
+Ensure you have the following installed and up to date:
 
 - [Docker](https://docs.docker.com/get-docker/)
 
