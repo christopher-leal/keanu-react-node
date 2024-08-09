@@ -1,16 +1,24 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { useGetImage } from "../lib/graphql";
+import { useGetImage } from "../graphql";
 import { Container, Box, Typography, Alert, Button } from "@mui/material";
 
 export const ImagePage = () => {
   const [params] = useSearchParams();
   const navigate = useNavigate();
+
+  const id = params.get("id");
   const width = params.get("width");
   const height = params.get("height");
   const greyscale = params.get("greyscale") === "true";
   const young = params.get("young") === "true";
 
-  const { url, loading, error } = useGetImage(width!, height, greyscale, young);
+  const { url, loading, error } = useGetImage({
+    width: width!,
+    height,
+    greyscale,
+    young,
+    id,
+  });
   if (loading) {
     return (
       <Box
@@ -28,7 +36,7 @@ export const ImagePage = () => {
   }
   if (error) {
     return (
-      <Container sx={{}}>
+      <Container>
         <Box
           sx={{
             display: "flex",
@@ -71,26 +79,27 @@ export const ImagePage = () => {
         }}
       >
         <Box
-        sx={{
-          width: "100%",
-          height: "auto",
-          overflow: "hidden",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div
-          dangerouslySetInnerHTML={{ __html: url }}
-          style={{ width: "100%", height: "auto" }}
-        />
-      </Box>
+          sx={{
+            width: "100%",
+            height: "auto",
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            dangerouslySetInnerHTML={{ __html: url }}
+            style={{ width: "100%", height: "auto" }}
+          />
+        </Box>
 
         <Box
           sx={{
             width: "100%",
-            maxWidth: "600px",
+            maxWidth: "500px",
             p: 2,
+            mt: 2,
             border: "1px solid #ddd",
             borderRadius: "8px",
             backgroundColor: "background.primary",
@@ -107,10 +116,10 @@ export const ImagePage = () => {
             <strong>Height:</strong> {height}
           </Typography>
           <Typography>
-            <strong>Greyscale:</strong> {String(greyscale)}
+            <strong>Greyscale:</strong> {greyscale ? "Yes" : "No"}
           </Typography>
           <Typography>
-            <strong>Young:</strong> {String(young)}
+            <strong>Young:</strong> {young ? "Yes" : "No"}
           </Typography>
         </Box>
       </Box>
