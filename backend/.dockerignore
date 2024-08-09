@@ -1,3 +1,7 @@
-node_modules
-dist
-logs
+*
+!/package.json
+!/package-lock.json
+!/tsconfig.json
+!/nodemon.json
+!/src
+!.env
