@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  db:
+    image: mongo:6.0.13
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - db-network
+  backend:
+    build:
+      context: ./backend
+      target: production
+    networks:
+      - app-network
+      - db-network
+    depends_on:
+      - db
+  frontend:
+    build:
+      context: ./frontend
+      target: production
+    networks:
+      - app-network
+  nginx:
+    image: nginx
+    build:
+      context: ./nginx
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      - frontend
+networks:
+  app-network:
+    driver: bridge
+  db-network:
+    driver: bridge
+volumes:
+  mongo_data:
