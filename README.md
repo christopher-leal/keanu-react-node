@@ -41,7 +41,7 @@ cd keanu-react-node
 
 2. **Run with Docker Compose**
 ```bash
-docker-compose up
+docker compose up
 ```
 
 
