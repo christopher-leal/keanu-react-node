@@ -3,4 +3,5 @@ export interface ImageDto {
   height?: number;
   greyscale: boolean;
   young: boolean;
+  historyId?: string
 }

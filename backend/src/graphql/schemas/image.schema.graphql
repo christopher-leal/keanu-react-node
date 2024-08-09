@@ -17,7 +17,8 @@ type Query {
     height: Int
     greyscale: Boolean
     young: Boolean
-  ): Image!
+    historyId: String
+  ): Image
 
   getHistory(limit: Int): [History]
 }

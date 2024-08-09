@@ -7,8 +7,18 @@ import { v4 as uuidv4 } from 'uuid';
 export const imageResolver = {
   Query: {
     keanuImage: async (_: unknown, imageDto: ImageDto, { dataSources }: DataSourceContext) => {
+      const { width, height, greyscale, young , historyId} = imageDto
+      if (historyId) {
+        const history = await HistoryModel.findOne({ id: historyId });
+        if (!history) {
+          throw new Error("History item was not found");
+        }
+        return {
+          url: history?.url,
+        };
+      }
+  
       const imageData = await dataSources.keanuAPI.getImage(imageDto);
-      const { width, height, greyscale, young } = imageDto
       const historyData: HistoryType = {
         id: uuidv4(),
         width,
