@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import "./normalize.css";
 import { ApolloProvider } from "@apollo/client";
-import { apolloClient } from "./lib/graphql";
+import { apolloClient } from "./graphql/index.ts";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
