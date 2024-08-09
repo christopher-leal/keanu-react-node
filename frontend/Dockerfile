@@ -3,7 +3,7 @@ FROM node:20.16 AS base
 ENV DIR /app
 WORKDIR $DIR
 
-FROM base as build
+FROM base AS build
 
 COPY . .
 
@@ -15,7 +15,6 @@ FROM base as production
 
 COPY --from=build $DIR/node_modules $DIR/node_modules
 COPY --from=build $DIR/dist $DIR/dist
-# COPY --from=build $DIR/.env $DIR/.env
 
 ENV NODE_ENV=production
 

@@ -3,7 +3,7 @@ FROM node:20.16-alpine3.20 AS base
 ENV DIR /app
 WORKDIR $DIR
 
-FROM base as build
+FROM base AS build
 
 COPY . .
 
@@ -11,7 +11,7 @@ RUN npm ci
 RUN npm run build && \
     npm prune --production
 
-FROM base as production
+FROM base AS production
 
 COPY --from=build $DIR/node_modules $DIR/node_modules
 COPY --from=build $DIR/dist $DIR/dist
