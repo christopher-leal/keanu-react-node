@@ -1,4 +1,26 @@
-import { readFileSync } from 'fs';
-import path from 'path';
+export const imageSchema = `#graphql
+  type Image {
+    url: String!
+  }
 
-export const imageSchema = readFileSync(path.join(__dirname,'./image.schema.graphql'), { encoding: 'utf-8' });
+  type History {
+    id: String!
+    width: Int!
+    height: Int
+    greyscale: Boolean
+    young: Boolean
+    url: String!
+  }
+
+  type Query {
+    keanuImage(
+      width: Int!
+      height: Int
+      greyscale: Boolean
+      young: Boolean
+      historyId: String
+    ): Image
+
+    getHistory(limit: Int): [History]
+  }
+`;

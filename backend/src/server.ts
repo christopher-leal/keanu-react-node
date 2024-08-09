@@ -5,9 +5,9 @@ import { expressMiddleware } from "@apollo/server/express4";
 import morgan from "morgan";
 import { logger } from "./config";
 import { KeanuAPI } from "./graphql/dataSources/keanu-api";
-import { imageSchema } from "./graphql/schemas";
 import { imageResolver } from "./graphql/resolvers";
 import { DataSourceContext } from "./graphql/index";
+import { imageSchema } from "./graphql/schemas";
 
 interface Options {
   port?: number;
