@@ -11,13 +11,8 @@ RUN npm ci
 RUN npm run build && \
     npm prune --production
 
-FROM base as production
-
-COPY --from=build $DIR/node_modules $DIR/node_modules
-COPY --from=build $DIR/dist $DIR/dist
-
-ENV NODE_ENV=production
-
-RUN npm install -g http-server
-
-CMD ["http-server", "dist", "-p", "5173"]
+FROM nginx:latest
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/nginx/default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
