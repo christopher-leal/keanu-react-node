@@ -10,7 +10,6 @@ The project is organized into the following directories:
 
 - /frontend # React frontend application
 - /backend # Node.js backend application with GraphQL
-- /nginx # Nginx configuration
 - /docker-compose.yml # Docker Compose configuration
 
 ## Technologies
